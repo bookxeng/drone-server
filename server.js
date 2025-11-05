@@ -1,8 +1,10 @@
 import "dotenv/config";
 import express from "express";
+import cors from "cors";
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3001;
 app.use(express.json());
+app.use(cors());
 
 const DRONE_URL = process.env.DRONE_URL;
 const DRONE_LOG = process.env.DRONE_LOG;
@@ -132,6 +134,6 @@ app.post("/logs", async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server listening on port ${PORT}`);
 });
